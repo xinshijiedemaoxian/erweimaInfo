@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<title>二维码生成器</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+		<link rel="stylesheet" type="text/css" href="css/mobiletel.css" />
+		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/bobojs.js"></script>
+		<script type="text/javascript" src="js/qrcode.js"></script>
+		<script type="text/javascript" src="js/canvas.js"></script>
+		<script type="text/javascript" src="js/mobiletel.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/weui.min.css" />
+		
+	</head>
+	<script type="text/javascript">
+		var mode = "vcard";
+	</script>
+
+	<body>
+		<div class="mobile_nav">
+			<ul class="mobile_nav_ul">
+				<li class="mobile_nav_li mobile_nav_li3">
+					<a href="javascript:vcard();"><span class="menu_title">开票信息</span></a>
+				</li>
+			</ul>
+		</div>
+		<div class="wraper container" id="wraper">
+			<div class="contain">
+				<div id="vcard">
+					<div class="weui_cells weui_cells_form">
+						<div class="weui_cell">
+							<div class="weui_cell_hd"><label class="weui_label fa fa-tag" style="background:#936be5;"></label></div>
+							<div class="weui_cell_bd weui_cell_primary"><input class="weui_input" id="name" type="text" placeholder="请输入名称"></div>
+						</div>
+						<div class="weui_cell">
+							<div class="weui_cell_hd"><label class="weui_label fa fa-credit-card" style="background:#fdba5b;"></label></div>
+							<div class="weui_cell_bd weui_cell_primary"><input class="weui_input" id="identify" type="text" placeholder="纳税人识别号"></div>
+						</div>
+						<div class="weui_cell">
+							<div class="weui_cell_hd"><label class="weui_label fa fa-map-marker" style="position: relative;top:-12px;background:#76d1ff;"></label></div>
+							<div class="weui_cell_bd weui_cell_primary"><textarea id="address" class="weui_textarea" placeholder="请输入地址及电话" rows="3" style="height:60px;font-size: inherit;padding:0;"></textarea></div>
+						</div>
+					</div>
+					<div class="weui_cells weui_cells_form">
+						<div class="weui_cell">
+							<div class="weui_cell_hd"><label class="weui_label fa fa-bank" style="background:#00d1d8;"></label></div>
+							<div class="weui_cell_bd weui_cell_primary"><textarea id="bank" class="weui_textarea" placeholder="请输入开户行及账号" rows="2" style="height:60px;font-size: inherit;padding:0;"></textarea></div>
+						</div>
+					</div>
+					<input type="hidden" id="value">
+				</div>
+				<div class="weui_cells_tips tips_overflow" id="tips_overflow"></div>
+			</div>
+			<div class="submit">
+				<a href="#" class="weui_btn weui_btn_primary" id="click-create"  style="background: #26b9a9">生成二维码</a>
+			</div>
+		</div>
+		<div id="result">
+			<div id="loading" style="position: absolute;top: 50%;left: 50%;margin-left: -50px;margin-top: -50px;width: 100px;height: 100px;display:none;text-align: center;"><img src="//static.clewm.net/static/images/newimages/mobileloading_a69a0a4.gif">
+				<p>
+					<a>二维码正在生成</a>
+				</p>
+			</div>
+			<div id="resultdiv"><canvas id="qrcode">
+浏览器不支持html5
+</canvas><img id="qrcodeimg" src="" style="display:none;">
+				<div class="resultbtn">
+					<p style="margin-top:25px;color:#fff">小提示：<span style="color:#04be02;">长按图片</span>选择保存至手机相册</p>
+					<div class="result_tips">
+						<a href="javascript:;" id="close" class="close weui_progress_opr"><i class="weui_icon_cancel"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?cb508e5fef81367bfa47f4ec313bf68c";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+<script>
+	switch(mode) {
+		case 'text':
+			text();
+			break;
+		case 'url':
+			url();
+			break;
+		case 'vcard':
+			vcard();
+			break;
+		default:
+			text();
+	}
+</script>

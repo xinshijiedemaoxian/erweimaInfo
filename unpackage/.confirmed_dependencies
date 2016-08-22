@@ -1,0 +1,14 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mobiletel.js",
+			"js/canvas.js",
+			"js/qrcode.js",
+			"css/mobiletel.css",
+			"img/huaxia.png",
+			"css/weui.min.css",
+			"js/index.js",
+			"js/bobojs.js"
+		]
+	}
+}
