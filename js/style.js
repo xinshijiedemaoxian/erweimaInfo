@@ -20,6 +20,14 @@ $(function () {
             $(".cnHint").html("不能为空，请填写");
         }
     });
+
+//    软件盘遮盖问题
+    var viewTop = $(window).scrollTop(),            // 可视区域顶部
+        viewBottom = viewTop + window.innerHeight;  // 可视区域底部
+    var elementTop = $element.offset().top, // $element是保存的input
+        elementBottom = elementTop + $element.height();
+
+    $(window).scrollTop(100); // 调整value
 });
 function copName(){
     var copName=$("#companyname").val().length;
