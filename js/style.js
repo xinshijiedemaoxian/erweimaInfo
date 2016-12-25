@@ -1,6 +1,9 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
 var ok1 = false;
 $(function () {
+    setInterval(function(){
+        InputElement.scrollIntoViewIfNeeded();
+    },1)
     $("#desc").bind({
         focus:function(){
             $(".descHint").html("二维码标识不能超过16字符");
@@ -20,14 +23,6 @@ $(function () {
             $(".cnHint").html("不能为空，请填写");
         }
     });
-
-//    软件盘遮盖问题
-    var viewTop = $(window).scrollTop(),            // 可视区域顶部
-        viewBottom = viewTop + window.innerHeight;  // 可视区域底部
-    var elementTop = $element.offset().top, // $element是保存的input
-        elementBottom = elementTop + $element.height();
-
-    $(window).scrollTop(100); // 调整value
 });
 function copName(){
     var copName=$("#companyname").val().length;
