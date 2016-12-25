@@ -1,9 +1,7 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
 var ok1 = false;
 $(function () {
-    setInterval(function(){
-        InputElement.scrollIntoViewIfNeeded();
-    },1)
+
     $("#desc").bind({
         focus:function(){
             $(".descHint").html("二维码标识不能超过16字符");
