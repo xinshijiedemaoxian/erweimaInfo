@@ -2,7 +2,7 @@ var qrcode = new QRCode(document.getElementById("qrcode"), {});
 var ok1 = false;
 $(function () {
 
-    $('input[type="text"],textarea').on('focus', function () {
+    $('input[type="text"],textarea').on('click', function () {
         var target = this;
         setTimeout(function(){
             target.scrollIntoViewIfNeeded();
