@@ -1,15 +1,6 @@
 var qrcode = new QRCode(document.getElementById("qrcode"), {});
 var ok1 = false;
 $(function () {
-
-    $('input[type="text"],textarea').on('click', function () {
-        var target = this;
-        setTimeout(function(){
-            target.scrollIntoViewIfNeeded();
-            console.log('scrollIntoViewIfNeeded');
-        },400);
-    });
-
     $("#desc").bind({
         focus:function(){
             $(".descHint").html("二维码标识不能超过16字符");
@@ -18,7 +9,7 @@ $(function () {
             $(".descHint").html("");
         }
     });
-    $(".button").on("click", function () {
+    $("form").submit(function(e){
         var len=$("#desc").val().length;
         if(len===0){
             $("#desc").val("开票信息");
@@ -29,6 +20,17 @@ $(function () {
             $(".cnHint").html("不能为空，请填写");
         }
     });
+/*    $(".button").on("click", function () {
+        var len=$("#desc").val().length;
+        if(len===0){
+            $("#desc").val("开票信息");
+        }
+        if(ok1){
+            makeCode();
+        }else{
+            $(".cnHint").html("不能为空，请填写");
+        }
+    });*/
 });
 function copName(){
     var copName=$("#companyname").val().length;
